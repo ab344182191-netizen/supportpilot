@@ -1,4 +1,5 @@
 import { supabase } from "@/lib/supabase";
+import { getSupabase } from "@/lib/supabase";
 
 export const runtime = "nodejs";
 
@@ -15,6 +16,7 @@ export async function POST(req: Request) {
         { status: 400 }
       );
     }
+const supabase = getSupabase();
 
     const { error } = await supabase.from("leads").insert({
       name: name || null,

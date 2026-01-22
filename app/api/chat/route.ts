@@ -1,5 +1,5 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { supabase } from "@/lib/supabase";
+import { getSupabase } from "@/lib/supabase";
 
 export const runtime = "nodejs";
 
@@ -21,7 +21,7 @@ export async function POST(req: Request) {
         { status: 500 }
       );
     }
-
+const supabase = getSupabase();
     // FAQs from Supabase
     const { data: faqs, error: faqErr } = await supabase
       .from("faqs")
